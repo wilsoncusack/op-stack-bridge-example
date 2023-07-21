@@ -53,10 +53,12 @@ export default function Bridge() {
       setL1TxStatus(TxStatus.Pending);
       await response.wait();
       setL1TxStatus(TxStatus.Confirmed);
+      // we will use the L2 block number to optimize
+      // our L2 calls looking for the bridge transaction
       const l2Block = await messenger.l2Provider.getBlockNumber();
       const waitTime = await messenger.estimateMessageWaitTimeSeconds(
         response.hash,
-        0,
+        0, // message index, 0 unless multicall
         l2Block,
       );
       setEstimatedWaitTime(waitTime);
@@ -82,7 +84,7 @@ export default function Bridge() {
       try {
         const status = await messenger.getMessageStatus(
           l1TxHash,
-          0,
+          0, // message index, 0 unless multicall
           l2StartBlockNumber,
         );
         setMessageStatus(status);
