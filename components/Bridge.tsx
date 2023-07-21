@@ -9,7 +9,7 @@ enum TxStatus {
 }
 
 const L1_EXPLORER_URL = "https://goerli.etherscan.io/";
-const L2_EXPLORER_URL = "	https://goerli.basescan.org";
+const L2_EXPLORER_URL = "https://goerli.basescan.org";
 
 export default function Bridge() {
   const { address, isConnected } = useAccount();
