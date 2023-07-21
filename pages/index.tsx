@@ -1,13 +1,19 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from "react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Bridge from "../components/Bridge";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
-
-export default IndexPage
+export default function IndexPage() {
+  return (
+    <div>
+      <div className="flex justify-end p-5">
+        <ConnectButton showBalance={false} />
+      </div>
+      <div className="flex flex-col items-center">
+        <h1 className="text-lg font-bold">
+          Bridge ETH from Goerli to Base Goerli
+        </h1>
+        <Bridge />
+      </div>
+    </div>
+  );
+}
