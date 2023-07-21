@@ -140,9 +140,9 @@ export default function Bridge() {
   // solving an annoying hydration diff issue
   useEffect(() => {
     if (isConnected) {
-        setShowConnectMessage(false);
+      setShowConnectMessage(false);
     } else {
-        setShowConnectMessage(true);
+      setShowConnectMessage(true);
     }
   }, [isConnected]);
 

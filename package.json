@@ -2,9 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build:css": "tailwind build src/styles/tailwind.css -o src/styles/index.css",
-    "start": "npm run build:css && next start",
-    "build": "npm run build:css && next build",
+    "start": "next start",
+    "build": "next build",
     "type-check": "tsc",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore . "
   },
