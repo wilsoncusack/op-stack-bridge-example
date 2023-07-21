@@ -13,8 +13,7 @@ const L2_EXPLORER_URL = "https://goerli.basescan.org";
 
 export default function Bridge() {
   const { address, isConnected } = useAccount();
-  const [show, setShow] = useState<boolean>(false);
-
+  const [showConnectMessage, setShowConnectMessage] = useState<boolean>(false);
   const { data: signer } = useSigner();
   const [l1TxHash, setL1TxHash] = useState<string>("");
   const [l1TxStatus, setL1TxStatus] = useState<TxStatus | null>(null);
@@ -141,11 +140,13 @@ export default function Bridge() {
   // solving an annoying hydration diff issue
   useEffect(() => {
     if (isConnected) {
-      setShow(true);
+        setShowConnectMessage(false);
+    } else {
+        setShowConnectMessage(true);
     }
   }, [isConnected]);
 
-  if (!show) {
+  if (showConnectMessage) {
     return <p className="text-sm">Connect to a wallet to get started</p>;
   }
 
